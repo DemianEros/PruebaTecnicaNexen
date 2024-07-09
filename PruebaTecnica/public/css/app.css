@@ -1,0 +1,48 @@
+/* Estilos personalizados */
+.navbar {
+    background-color: #343a40; /* Color de fondo del navbar */
+    padding-top: 10px; /* Espacio superior */
+    padding-bottom: 10px; /* Espacio inferior */
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Alinea verticalmente los elementos del navbar */
+    padding-left: 500px; /* Espacio a la izquierda */
+    padding-right: 500px; /* Espacio a la derecha */
+}
+
+.navbar .navbar-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    flex-grow: 1; /* Para que ocupe todo el espacio disponible */
+}
+
+.navbar .nav-item {
+    margin: 15px; /* Espacio entre elementos */
+}
+
+.navbar .form-inline .form-control {
+    margin-right: 10px; /* Espacio entre elementos */
+    border-color: #ffffff; /* Color del borde del input */
+}
+
+.navbar .form-inline .btn {
+    border-color: #ffffff; /* Color del borde del botón */
+    color: #ffffff; /* Color del texto del botón */
+}
+
+.navbar .form-inline .btn:hover {
+    background-color: #ffffff; /* Cambia el color de fondo al pasar el mouse */
+    color: #343a40; /* Cambia el color del texto al pasar el mouse */
+}
+
+.navbar .nav-link {
+    color: #ffffff; /* Color del texto de los enlaces */
+}
+
+.navbar .nav-link:hover {
+    color: #f8f9fa; /* Cambia el color del texto al pasar el mouse */
+}

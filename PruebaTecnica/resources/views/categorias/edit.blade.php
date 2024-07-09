@@ -9,10 +9,10 @@
     <form action="{{ route('categorias.update', $categoria->id) }}" method="POST">
         @csrf
         @method('PUT')
-        <label for="nombre">Nombre:</label>
+        <label for="nombre">Categoría:</label>
         <input type="text" name="nombre" value="{{ $categoria->nombre }}" required>
         
-        <label for="categoria">Categoría:</label>
+        <label for="categoria">Nombre:</label>
         <input type="text" name="categoria" value="{{ $categoria->categoria }}" required>
         
         <label for="descripcion">Descripción:</label>

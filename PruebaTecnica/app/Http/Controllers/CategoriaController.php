@@ -7,9 +7,25 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $categorias = Categoria::all();
+        $query = Categoria::query();
+
+        // Filtrar por nombre
+        if ($request->has('buscar')) {
+            $query->where('nombre', 'like', '%' . $request->input('buscar') . '%');
+        }
+
+        // Filtrar por categoría si se selecciona una específica
+        if ($request->filled('filtro_categoria')) {
+            $categoria_id = $request->input('filtro_categoria');
+            if ($categoria_id !== '') {
+                $query->where('id', $categoria_id);
+            }
+        }
+
+        $categorias = $query->get();
+
         return view('categorias.index', compact('categorias'));
     }
 

@@ -1,3 +1,7 @@
+@extends('layouts.app')
+@section('content')
+    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,14 +10,14 @@
 </head>
 <body>
     <h2>Lista de Categorías</h2>
-    <a href="{{ route('categorias.create') }}">Crear Nueva Categoría</a>
+    <a href="{{ route('categorias.create') }}">Crear Nueva ITEM</a>
     @if (session('success'))
         <div>{{ session('success') }}</div>
     @endif
     <table>
         <tr>
-            <th>Nombre</th>
             <th>Categoria</th>
+            <th>Nombre</th>
             <th>Descripción</th>
             <th>Acciones</th>
         </tr>
@@ -35,3 +39,4 @@
     </table>
 </body>
 </html>
+@endsection
