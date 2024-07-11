@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
+    public function __construct()
+    {
+        // Share categories with all views
+        $categorias = Categoria::all();
+        view()->share('categorias', $categorias);
+    }
+
     public function index(Request $request)
     {
         $query = Categoria::query();
@@ -49,6 +56,12 @@ class CategoriaController extends Controller
         ]);
 
         return redirect()->route('categorias.index')->with('success', 'Categoría creada con éxito.');
+    }
+
+    public function show($id)
+    {
+        $categoria = Categoria::findOrFail($id); // Obtener la categoría por su ID
+        return view('categorias.show', compact('categoria'));
     }
 
     public function edit(Categoria $categoria)

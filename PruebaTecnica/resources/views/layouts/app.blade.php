@@ -3,51 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Tu aplicación')</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <!-- Agregar estilos personalizados aquí -->
-    @yield('styles')
+    <title>Título de tu Aplicación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #3498db;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropbtn {
+            font-size: 18px;
+            border: none;
+            outline: none;
+            color: white;
+            background-color: inherit;
+            margin: 0;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        .dropbtn:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('categorias.index') }}">Borrar busqueda</a>
-                        </li>
-                        <li class="nav-item">
-                            <form class="form-inline my-2 my-lg-0" action="{{ route('categorias.index') }}" method="GET">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar por nombre" aria-label="Buscar" name="buscar" value="{{ request('buscar') }}">
-                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-                            </form>
-                        </li>
-                        <li class="nav-item">
-                            <form class="form-inline my-2 my-lg-0 ml-3" action="{{ route('categorias.index') }}" method="GET">
-                                <select class="form-control mr-sm-2" name="filtro_categoria">
-                                    <option value="">Todas las categorías</option>
-                                    @foreach($categorias as $cat)
-                                        <option value="{{ $cat->id }}" {{ request('filtro_categoria') == $cat->id ? 'selected' : '' }}>{{ $cat->nombre }}</option>
-                                    @endforeach
-                                </select>
-                                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Filtrar</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+    <div class="navbar">
+        <div class="dropdown">
+            <button class="dropbtn">Categorías</button>
+            <div class="dropdown-content">
+                @foreach($categorias as $categoria)
+                    <a href="{{ route('categorias.show', $categoria->id) }}">{{ $categoria->nombre }}</a>
+                @endforeach
             </div>
-        </nav>
-    </header>
-    
-    <main class="py-4">
-        <div class="container">
-            @yield('content')
         </div>
-    </main>
+    </div>
 
-    <script src="{{ asset('js/app.js') }}"></script>
-    <!-- Agregar scripts personalizados aquí -->
-    @yield('scripts')
+    <div class="container">
+        @yield('content')
+    </div>
 </body>
 </html>
